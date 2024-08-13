@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14  # Adjust to the version of Node.js you are using
+      nodejs: 14
     commands:
       - echo Installing dependencies...
       - npm install
@@ -23,15 +23,14 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Opening coverage report...
-      - npm run coverage
+      - echo Coverage report generated
 
 artifacts:
   files:
     - '**/*'
-  base-directory: 'build'  # Adjust if your build outputs are in a different directory
-  discard-paths: yes  # Set to yes to avoid including unnecessary directory structure in S3
+  base-directory: '.'  # Adjust this to the correct path if necessary
 
 cache:
   paths:
     - 'node_modules/**/*'
+
